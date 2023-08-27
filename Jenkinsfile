@@ -13,19 +13,19 @@ node(){
                     bat(/"%MVN_HOME%\bin\mvn" -Dmaven.test.failure.ignore clean package/)
                 }
             }
-        }
-//     stage("copying required files"){
-//         sh "scp -o StrictHostKeyChecking=no target/*.war root@docker-master:/inet/projects"
-//         sh "scp -o StrictHostKeyChecking=no Dockerfile root@docker-master:/inet/projects"
-//         sh "scp -o StrictHostKeyChecking=no kubernetes-deployment.yml root@k8smaster:/inet/projects"
-//    }
+    }
+    stage("copying required files"){
+        sh "scp -o StrictHostKeyChecking=no target/*.war root@docker-master:/inet/projects"
+        sh "scp -o StrictHostKeyChecking=no Dockerfile root@docker-master:/inet/projects"
+        sh "scp -o StrictHostKeyChecking=no kubernetes-deployment.yml root@k8smaster:/inet/projects"
+    }
 
 
-//     stage("Building the Docker image"){ 
-//         sh 'docker build -t bookstore.app.v1.$BUILD_ID /inet/projects'
-//         sh 'docker tag bookstore.app.v1.$BUILD_ID steju480/bookstore.app.v1.$BUILD_ID'
-//         sh 'docker tag bookstore.app.v1.$BUILD_ID steju480/bookstore.app.v1'
-//     }
+    stage("Building the Docker image"){ 
+        sh 'docker build -t bookstore.app.v1.$BUILD_ID /inet/projects'
+        sh 'docker tag bookstore.app.v1.$BUILD_ID steju480/bookstore.app.v1.$BUILD_ID'
+        sh 'docker tag bookstore.app.v1.$BUILD_ID steju480/bookstore.app.v1'
+    }
 //     stage("Docker image push"){
 //         withCredentials([usernamePassword(credentialsId: 'dockerhub', passwordVariable: 'password', usernameVariable: 'user')]) {
 //             sh "docker login -u ${user} -p ${password}"
