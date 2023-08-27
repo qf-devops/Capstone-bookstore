@@ -1,10 +1,19 @@
 node(){
     stage("git clone"){
         checkout scm
+        mvnHome = tool 'mvn'
+
     }    
-    stage("build-upload artifacts"){
-        sh "mvn clean package"
-    }
+    stage('Build') {
+            // Run the maven build
+            withEnv(["MVN_HOME=$mvnHome"]) {
+                if (isUnix()) {
+                    sh '"$MVN_HOME/bin/mvn" -Dmaven.test.failure.ignore clean package'
+                } else {
+                    bat(/"%MVN_HOME%\bin\mvn" -Dmaven.test.failure.ignore clean package/)
+                }
+            }
+        }
 //     stage("copying required files"){
 //         sh "scp -o StrictHostKeyChecking=no target/*.war root@docker-master:/inet/projects"
 //         sh "scp -o StrictHostKeyChecking=no Dockerfile root@docker-master:/inet/projects"
