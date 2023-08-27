@@ -15,15 +15,15 @@ node(){
             }
     }
     stage("copying required files"){
-        sh "mkdir -p /inet/projects"
-        sh "scp -o StrictHostKeyChecking=no target/*.war /inet/projects"
-        sh "scp -o StrictHostKeyChecking=no Dockerfile /inet/projects"
-        sh "scp -o StrictHostKeyChecking=no kubernetes-deployment.yml /inet/projects"
+        sh "mkdir -p ~/inet/projects"
+        sh "scp -o StrictHostKeyChecking=no target/*.war ~/inet/projects"
+        sh "scp -o StrictHostKeyChecking=no Dockerfile ~/inet/projects"
+        sh "scp -o StrictHostKeyChecking=no kubernetes-deployment.yml ~/inet/projects"
     }
 
 
     stage("Building the Docker image"){ 
-        sh 'docker build -t bookstore.app.v1.$BUILD_ID /inet/projects'
+        sh 'docker build -t bookstore.app.v1.$BUILD_ID ~/inet/projects'
         sh 'docker tag bookstore.app.v1.$BUILD_ID steju480/bookstore.app.v1.$BUILD_ID'
         sh 'docker tag bookstore.app.v1.$BUILD_ID steju480/bookstore.app.v1'
     }
