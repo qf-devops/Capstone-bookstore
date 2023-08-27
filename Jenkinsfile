@@ -35,8 +35,8 @@ node(){
 //       }  
      stage("deploying the app"){     
    //     sh 'aws eks --region <region-code> update-kubeconfig --name mycluster'
-        sh "kubectl delete -f /inet/projects/kubernetes-deployment.yml"
-        sh "kubectl create -f /inet/projects/kubernetes-deployment.yml"
+        sh "/home/ubuntu/bin/kubectl delete -f /inet/projects/kubernetes-deployment.yml"
+        sh "/home/ubuntu/bin/kubectl create -f /inet/projects/kubernetes-deployment.yml"
      }
 
 }      
