@@ -34,7 +34,7 @@ node(){
 //           }                        
 //       }  
      stage("deploying the app"){     
-   //     sh 'aws eks --region <region-code> update-kubeconfig --name mycluster'
+   //      aws eks update-kubeconfig --region us-east-1 --name devopscluster
         sh "/home/ubuntu/bin/kubectl delete -f /inet/projects/kubernetes-deployment.yml"
         sh "/home/ubuntu/bin/kubectl create -f /inet/projects/kubernetes-deployment.yml"
      }
