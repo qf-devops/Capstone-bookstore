@@ -15,9 +15,10 @@ node(){
             }
     }
     stage("copying required files"){
-        sh "scp -o StrictHostKeyChecking=no target/*.war root@docker-master:/inet/projects"
-        sh "scp -o StrictHostKeyChecking=no Dockerfile root@docker-master:/inet/projects"
-        sh "scp -o StrictHostKeyChecking=no kubernetes-deployment.yml root@k8smaster:/inet/projects"
+        sh "mkdir -p /inet/projects"
+        sh "scp -o StrictHostKeyChecking=no target/*.war /inet/projects"
+        sh "scp -o StrictHostKeyChecking=no Dockerfile /inet/projects"
+        sh "scp -o StrictHostKeyChecking=no kubernetes-deployment.yml /inet/projects"
     }
 
 
