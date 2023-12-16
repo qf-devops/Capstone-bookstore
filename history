@@ -1,0 +1,91 @@
+    1  clear
+    2  sudo apt update
+    3  javac
+    4  sudo apt install openjdk-11-jdk-headless  maven -y
+    5  clear
+    6  pwd
+    7  mvn
+    8  clear
+    9  git clone https://github.com/qf-devops/Capstone-bookstore.git
+   10  cd Capstone-bookstore/
+   11  ls -lrt
+   12  git checkout  -b demo
+   13  git branhc
+   14  git branch
+   15  ls -lrt
+   16  clear
+   17  mvn clean package
+   18  vi pom.xml 
+   19  clear
+   20  mvn clean package
+   21  clear
+   22  docker
+   23  sudo apt  install docker.io  
+   24  systemctl status docker
+   25  clear
+   26  which docker
+   27  pwd
+   28  docker run -it -v /home/ubuntu/Capstone-bookstore:/build -w /build maven:latest mvn clean package
+   29  sudo chown ubuntu:ubuntu /var/run/docker.sock
+   30  docker run -it -v /home/ubuntu/Capstone-bookstore:/build -w /build maven:latest mvn clean package
+   31  pwd
+   32  ls -lrt
+   33  docker ps
+   34  docker ps -a
+   35  ls -lrt
+   36  touch a.py
+   37  vi a.py 
+   38  docker run -it -v /home/ubuntu/Capstone-bookstore:/build -w /build python:latest python a.py
+   39  docker ps -a
+   40  docker run -itd -p 81:80 --name=n1 nginx 
+   41  docker ps
+   42  cd
+   43  clear
+   44  git clone https://github.com/qfitsolutions/docker.git
+   45  cd docker/
+   46  ls -lrtr
+   47  docker images
+   48  docker build -t web .
+   49  docker images
+   50  ls -lrt
+   51  cat docker-compose.yml 
+   52  docker-compsoe
+   53  sudo apt install docker-compose
+   54  ls -lrt
+   55  docker-compose --help
+   56  docker-compose up -d
+   57  docker-compose ps
+   58  cd
+   59  clear
+   60  ls -lrt
+   61  cd ca
+   62  cd Capstone-bookstore/
+   63  ls -lrt
+   64  cat Dockerfile 
+   65  pwd
+   66  ls -lrt
+   67  cd target/
+   68  ls -lrt
+   69  cd
+   70  docker pull tomcat:9.0.84-jdk21-corretto-al2
+   71  docker pull tomcat:9.0.84-jdk11-corretto-al2
+   72  docker images
+   73  docker run -it -P tomcat:9.0.84-jdk11-corretto-al2
+   74  docker run -itd -P tomcat:9.0.84-jdk11-corretto-al2
+   75  docker ps 
+   76  docker  exec -it 7cb1891f8d9b bash
+   77  ls -lrt
+   78  cd Capstone-bookstore/
+   79  ls -lrt
+   80  cp Dockerfile Dockerfile.bkp
+   81  ls -lrt
+   82  vi Dockerfile
+   83  clear
+   84  ls -lrt
+   85  cp target/ILP_Bookstore.war  .
+   86  docker build -t webapp .
+   87  ls -ltr
+   88  docker images
+   89  docker run -itd -p 8080:8080 --name=web webapp
+   90  docker ps 
+   91  history
